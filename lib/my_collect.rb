@@ -1,7 +1,14 @@
+list = ["Tim Jones", "Bob Costas", "Don Knotts"]
+
 def my_collect(array)
-  array = ['ruby', 'javascript', 'python', 'objective-c']
-my_collect(array) do |lang|
-  lang.upcase
+  i = 0
+  
+  name_collection = []
+  while i < array.length
+    name_collection << yield(array[i])
+    i += 1
+  end
+  name_collection
 end
-return my_collect
-end
+
+my_collect(list) {|i| i.split(" ").first}
